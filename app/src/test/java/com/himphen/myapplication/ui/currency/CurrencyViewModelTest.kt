@@ -97,12 +97,62 @@ class CurrencyViewModelTest {
             CurrencyInfo.Fiat(id = "USD", name = "US Dollar", symbol = "USD", code = "USD")
         )
         viewModel.updateDataSource(mockData)
-        viewModel.updateSearchKeyword("Dollar")
+        viewModel.updateSearchKeyword("US")
 
         val adapterList = viewModel.adapterList.first()
 
         assertEquals(1, adapterList?.size)
         assertEquals("US Dollar", (adapterList?.get(0) as? CurrencyListAdapterItem.Fiat)?.name)
+    }
+
+    @Test
+    fun `adapterList should filter data based on keyword with name Classic`() = runBlocking {
+        createVM()
+
+        val mockData = listOf(
+            CurrencyInfo.Crypto(id = "T", name = "Tronclassic", symbol = "T"),
+            CurrencyInfo.Crypto(id = "ETC", name = "Ethereum Classic", symbol = "ETC"),
+        )
+        viewModel.updateDataSource(mockData)
+        viewModel.updateSearchKeyword("Classic")
+
+        val adapterList = viewModel.adapterList.first()
+
+        assertEquals(1, adapterList?.size)
+    }
+
+    @Test
+    fun `adapterList should filter data based on keyword with name Ethereum`() = runBlocking {
+        createVM()
+
+        val mockData = listOf(
+            CurrencyInfo.Crypto(id = "ETH", name = "Ethereum", symbol = "ETH"),
+            CurrencyInfo.Crypto(id = "ETC", name = "Ethereum Classic", symbol = "ETC"),
+        )
+        viewModel.updateDataSource(mockData)
+        viewModel.updateSearchKeyword("Ethereum")
+
+        val adapterList = viewModel.adapterList.first()
+
+        assertEquals(2, adapterList?.size)
+    }
+
+    @Test
+    fun `adapterList should filter data based on keyword with symbol ET`() = runBlocking {
+        createVM()
+
+        val mockData = listOf(
+            CurrencyInfo.Crypto(id = "ETH", name = "ETH", symbol = "ETH"),
+            CurrencyInfo.Crypto(id = "ETC", name = "ETC", symbol = "ETC"),
+            CurrencyInfo.Crypto(id = "ETN", name = "ETN", symbol = "ETN"),
+            CurrencyInfo.Crypto(id = "BET", name = "BET", symbol = "BET"),
+        )
+        viewModel.updateDataSource(mockData)
+        viewModel.updateSearchKeyword("ET")
+
+        val adapterList = viewModel.adapterList.first()
+
+        assertEquals(3, adapterList?.size)
     }
 
     @Test
