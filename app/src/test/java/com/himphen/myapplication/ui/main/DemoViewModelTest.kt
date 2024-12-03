@@ -5,7 +5,7 @@ import com.himphen.myapplication.domain.main.GetFromDB
 import com.himphen.myapplication.domain.main.InsertDB
 import com.himphen.myapplication.model.CurrencyInfo
 import com.himphen.myapplication.ui.MainDispatcherRule
-import com.himphen.myapplication.ui.main.viewmodel.MainViewModel
+import com.himphen.myapplication.ui.main.viewmodel.DemoViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -21,7 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class MainViewModelTest {
+class DemoViewModelTest {
     @MockK
     private lateinit var emptyDB: EmptyDB
 
@@ -31,7 +31,7 @@ class MainViewModelTest {
     @MockK
     private lateinit var getFromDB: GetFromDB
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: DemoViewModel
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
@@ -42,7 +42,7 @@ class MainViewModelTest {
     }
 
     private fun createVM() {
-        viewModel = MainViewModel(
+        viewModel = DemoViewModel(
             emptyDB = emptyDB,
             insertDB = insertDB,
             getFromDB = getFromDB,

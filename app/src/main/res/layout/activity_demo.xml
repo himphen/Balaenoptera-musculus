@@ -9,14 +9,14 @@
 
         <variable
             name="vm"
-            type="com.himphen.myapplication.ui.main.viewmodel.MainViewModel" />
+            type="com.himphen.myapplication.ui.main.viewmodel.DemoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
+        tools:context=".ui.main.DemoActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcContainer"

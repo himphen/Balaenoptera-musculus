@@ -4,30 +4,30 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import com.himphen.myapplication.databinding.ActivityMainBinding
+import com.himphen.myapplication.databinding.ActivityDemoBinding
 import com.himphen.myapplication.ui.currency.CurrencyListFragment
-import com.himphen.myapplication.ui.main.viewmodel.MainViewModel
+import com.himphen.myapplication.ui.main.viewmodel.DemoViewModel
 import com.himphen.myapplication.ui.main.viewmodel.MainViewModelResult
 import com.himphen.myapplication.util.launchCollect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class DemoActivity : AppCompatActivity() {
 
-    private lateinit var viewBinding: ActivityMainBinding
+    private lateinit var viewBinding: ActivityDemoBinding
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: DemoViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        viewBinding = ActivityDemoBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         val fragment = CurrencyListFragment()
 
         viewBinding.apply {
             vm = viewModel
-            lifecycleOwner = this@MainActivity
+            lifecycleOwner = this@DemoActivity
             buttonEmpty.setOnClickListener {
                 viewModel.emptyDB()
             }

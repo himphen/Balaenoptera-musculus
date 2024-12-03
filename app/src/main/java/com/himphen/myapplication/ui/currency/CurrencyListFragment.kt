@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.himphen.myapplication.databinding.FragmentCurrencyListBinding
 import com.himphen.myapplication.ui.currency.adapter.CurrencyListAdapter
 import com.himphen.myapplication.ui.currency.viewmodel.CurrencyListViewModel
-import com.himphen.myapplication.ui.main.viewmodel.MainViewModel
+import com.himphen.myapplication.ui.main.viewmodel.DemoViewModel
 import com.himphen.myapplication.util.launchCollect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -24,7 +24,7 @@ class CurrencyListFragment : Fragment() {
     private val viewModel: CurrencyListViewModel by viewModel {
         parametersOf()
     }
-    private val activityViewModel: MainViewModel by activityViewModels()
+    private val activityViewModel: DemoViewModel by activityViewModels()
 
     private val listAdapter by lazy {
         CurrencyListAdapter()
